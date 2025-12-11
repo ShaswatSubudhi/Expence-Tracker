@@ -42,33 +42,6 @@ A feature-rich, responsive expense tracking application with budget management, 
 - 🌈 **Visual Feedback** - Toast notifications for all actions
 - ⚡ **Fast Performance** - No frameworks, pure vanilla JavaScript
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- No installation required!
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/expense-tracker.git
-cd expense-tracker
-```
-
-2. **Open in browser**
-```bash
-# Simply open index.html in your browser
-# Or use a local server:
-python -m http.server 8000
-# Then visit http://localhost:8000
-```
-
-3. **For Claude.ai deployment**
-- Copy the entire HTML file content
-- Paste into Claude.ai as an artifact
-- Enjoy persistent storage!
-
 ## 📖 Usage Guide
 
 ### Adding Expenses
@@ -119,10 +92,11 @@ python -m http.server 8000
 ## 📂 Project Structure
 ```
 expense-tracker/
-├── index.html          # Main HTML file (all-in-one)
+├── index.html  # Main HTML file
+├── script.js   # JavaScript file
+├── styles.css  #CSS file       
 ├── README.md           # This file
-├── preview.png         # Screenshot
-└── sample_import.csv   # Sample CSV for testing
+└── preview.png         # Screenshot
 ```
 
 ## 🎨 Color Scheme
@@ -155,16 +129,6 @@ expense-tracker/
 - [ ] Expense tags/labels
 - [ ] Split expenses with friends
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -172,8 +136,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@Shaswat Subudhi](https://github.com/ShaswatSubudhi)
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/shaswat-subudhi-629b88381)
 
 ## 🙏 Acknowledgments
 
@@ -181,11 +145,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - PapaParse for CSV parsing
 - Google Fonts for Poppins font
 - Claude AI for development assistance
-
-## 📧 Contact
-
-Have questions or suggestions? Open an issue or reach out!
-
 ---
 
 ⭐ **Star this repo if you find it helpful!** ⭐
