@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced Expense Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+
+  <div class="main-header">
+    <h1 class="app-title">
+      <span>Expense Tracker</span>
+      <button class="btn export-btn" onclick="exportData()">Export CSV</button>
+    </h1>
+  </div>
+
+  <div class="left-panel">
+
+    <div class="card">
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchTab('expense')">Add Expense</button>
+        <button class="tab-btn" onclick="switchTab('budget')">Set Budget</button>
+        <button class="tab-btn" onclick="switchTab('import')">Import</button>
+      </div>
+
+      <div id="expenseTab">
+        <h3 id="formTitle">Add New Expense</h3>
+        <input id="title" placeholder="Title" />
+        <div class="currency-row">
+          <input id="amount" type="number" placeholder="Amount" />
+          <select id="currency" title="Select currency">
+            <option value="₹">₹ INR</option>
+            <option value="$">$ USD</option>
+            <option value="€">€ EUR</option>
+            <option value="£">£ GBP</option>
+            <option value="¥">¥ JPY</option>
+          </select>
+        </div>
+        <label for="date">Date</label>
+        <input id="date" type="date" title="Select a date" />
+        <select id="category" title="Select a category">
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Shopping</option>
+          <option>Bills</option>
+          <option>Other</option>
+        </select>
+        <select id="type" title="Select expense type">
+          <option value="required">Required (Essential)</option>
+          <option value="optional">Optional (Non-Essential)</option>
+        </select>
+        <div class="checkbox-container">
+          <input type="checkbox" id="recurring" />
+          <label for="recurring">Recurring expense (monthly)</label>
+        </div>
+        <button id="addBtn" class="btn btn-primary">Add Expense</button>
+        <button id="cancelBtn" class="btn btn-secondary" style="display:none; width:100%; margin-top:8px;" onclick="cancelEdit()">Cancel</button>
+      </div>
+
+      <div id="budgetTab" style="display:none;">
+        <h3>Set Category Budgets</h3>
+        <p style="font-size:13px; opacity:0.8;">Set monthly spending limits for each category</p>
+        <select id="budgetCategory">
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Shopping</option>
+          <option>Bills</option>
+          <option>Other</option>
+        </select>
+        <div class="currency-row">
+          <input id="budgetAmount" type="number" placeholder="Budget Amount" />
+          <select id="budgetCurrency">
+            <option value="₹">₹ INR</option>
+            <option value="$">$ USD</option>
+            <option value="€">€ EUR</option>
+            <option value="£">£ GBP</option>
+            <option value="¥">¥ JPY</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="setBudget()">Set Budget</button>
+        <div id="budgetList" style="margin-top:20px;"></div>
+      </div>
+
+      <div id="importTab" style="display:none;">
+        <h3>Import Expenses</h3>
+        <div class="import-section">
+          <p style="margin-top:0;">Upload a CSV file with your expenses</p>
+          <p style="font-size:12px; opacity:0.7; margin-bottom:16px;">Format: Title, Amount, Date (YYYY-MM-DD), Category, Type, Currency</p>
+          <input type="file" id="csvFile" accept=".csv" onchange="importCSV()" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Filters</h3>
+      <div class="filter-section">
+        <input id="searchBox" placeholder="Search expenses..." onkeyup="applyFilters()" />
+        <select id="filterCategory" title="Filter by category" onchange="applyFilters()">
+          <option value="">All Categories</option>
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Shopping</option>
+          <option>Bills</option>
+          <option>Other</option>
+        </select>
+        <select id="filterType" title="Filter by type" onchange="applyFilters()">
+          <option value="">All Types</option>
+          <option value="required">Required</option>
+          <option value="optional">Optional</option>
+        </select>
+        <select id="filterMonth" title="Filter by month" onchange="applyFilters()">
+          <option value="">All Time</option>
+          <option value="current">This Month</option>
+          <option value="last">Last Month</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card stats-card-mobile">
+      <h3>Statistics</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Total Expenses</div>
+          <div class="stat-value"><span id="totalExpensesMobile">₹0</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Total Items</div>
+          <div class="stat-value"><span id="totalItemsMobile">0</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Average Expense</div>
+          <div class="stat-value"><span id="avgExpenseMobile">₹0</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Top Category</div>
+          <div class="stat-value" style="font-size:16px;"><span id="topCategoryMobile">-</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card small-card">
+      <h3>Required Expenses</h3>
+      <h4>Total: <span id="reqTotal">₹0</span></h4>
+      <ul id="reqList"></ul>
+    </div>
+
+    <div class="card small-card">
+      <h3>Optional Expenses</h3>
+      <h4>Total: <span id="optTotal">₹0</span></h4>
+      <ul id="optList"></ul>
+    </div>
+
+  </div>
+
+  <div class="right-panel">
+
+    <div class="card chart-card">
+      <h3>Spending Over Time</h3>
+      <canvas id="trendChart"></canvas>
+    </div>
+
+    <div class="card chart-card">
+      <h3>Required vs Optional</h3>
+      <canvas id="typeChart"></canvas>
+    </div>
+
+    <div class="card chart-card">
+      <h3>Category Breakdown</h3>
+      <canvas id="expChart"></canvas>
+    </div>
+
+    <div class="card stats-card-desktop">
+      <h3>Statistics</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Total Expenses</div>
+          <div class="stat-value"><span id="totalExpenses">₹0</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Total Items</div>
+          <div class="stat-value"><span id="totalItems">0</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Average Expense</div>
+          <div class="stat-value"><span id="avgExpense">₹0</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Top Category</div>
+          <div class="stat-value" style="font-size:16px;"><span id="topCategory">-</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Budget Status</h3>
+      <div id="budgetStatus"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h3>Confirm Delete</h3>
+    <p>Are you sure you want to delete this expense?</p>
+    <div class="modal-buttons">
+      <button class="btn btn-danger" style="flex:1;" onclick="confirmDelete()">Delete</button>
+      <button class="btn btn-secondary" style="flex:1;" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+    <script src="script.js"></script>
+  </body>
+</html>

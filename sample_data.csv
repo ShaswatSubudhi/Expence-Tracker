@@ -1,0 +1,62 @@
+Title,Amount,Date,Category,Type,Currency,Recurring
+Netflix Subscription,199,2024-12-01,Bills,required,₹,true
+Spotify Premium,119,2024-12-01,Bills,required,₹,true
+Amazon Prime Membership,1499,2024-12-01,Bills,optional,₹,true
+Gym Membership,1500,2024-12-01,Other,required,₹,true
+Internet Bill,799,2024-12-01,Bills,required,₹,false
+Electricity Bill,1200,2024-12-02,Bills,required,₹,false
+Water Bill,350,2024-12-02,Bills,required,₹,false
+Phone Recharge,299,2024-12-03,Bills,required,₹,false
+Gas Cylinder,850,2024-12-03,Bills,required,₹,false
+Morning Grocery Shopping,2500,2024-12-04,Food,required,₹,false
+Fresh Vegetables from Market,800,2024-12-04,Food,required,₹,false
+Weekly Fruits Purchase,650,2024-12-05,Food,required,₹,false
+Pharmacy Medicines,450,2024-12-05,Bills,required,₹,false
+Breakfast at Cafe,250,2024-12-06,Food,optional,₹,false
+Coffee at Starbucks,350,2024-12-06,Food,optional,₹,false
+Lunch with Colleagues,600,2024-12-06,Food,optional,₹,false
+Pizza Delivery for Dinner,850,2024-12-07,Food,optional,₹,false
+Ice Cream Treat,200,2024-12-07,Food,optional,₹,false
+Restaurant Fine Dining,1800,2024-12-08,Food,optional,₹,false
+Street Food Snacks,150,2024-12-09,Food,optional,₹,false
+Monthly Bus Pass,500,2024-12-03,Travel,required,₹,false
+Fuel for Car,2000,2024-12-04,Travel,required,₹,false
+Uber to Office,150,2024-12-06,Travel,required,₹,false
+Auto Rickshaw,80,2024-12-07,Travel,required,₹,false
+Ola Cab Ride,220,2024-12-08,Travel,required,₹,false
+Flight to Mumbai,120,2024-12-09,Travel,optional,$,false
+Hotel Booking for Weekend,85,2024-12-09,Travel,optional,€,false
+Car Rental,3500,2024-12-10,Travel,optional,₹,false
+Train Tickets to Delhi,1200,2024-12-10,Travel,optional,₹,false
+Tourist Spot Entry Fee,500,2024-12-11,Travel,optional,₹,false
+New Running Shoes,2800,2024-12-05,Shopping,optional,₹,false
+Bluetooth Headphones,4500,2024-12-06,Shopping,optional,₹,false
+T-Shirts from Sale,1200,2024-12-07,Shopping,optional,₹,false
+Jeans and Jacket,3500,2024-12-07,Shopping,optional,₹,false
+Amazon Shopping - Home Items,3200,2024-12-08,Shopping,optional,₹,false
+Flipkart Electronics,2500,2024-12-08,Shopping,optional,₹,false
+Books from Store,35,2024-12-09,Shopping,optional,$,false
+Gaming Controller,45,2024-12-09,Shopping,optional,$,false
+Cinema Tickets for 2,600,2024-12-10,Shopping,optional,₹,false
+Online Course Udemy,899,2024-12-10,Shopping,optional,₹,false
+Gift for Friend Birthday,1500,2024-12-11,Shopping,optional,₹,false
+School Fees for Kids,15000,2024-12-01,Other,required,₹,false
+Tuition Classes Payment,3000,2024-12-02,Other,required,₹,false
+House Rent,18000,2024-12-01,Other,required,₹,false
+House Maintenance Charges,2500,2024-12-03,Other,required,₹,false
+Car Insurance Premium,8500,2024-12-04,Other,required,₹,false
+Health Insurance Premium,5000,2024-12-05,Other,required,₹,false
+Credit Card Payment,12000,2024-12-06,Other,required,₹,false
+Loan EMI,15000,2024-12-07,Other,required,₹,false
+Donation to Charity,2000,2024-12-08,Other,optional,₹,false
+Pet Food and Supplies,1200,2024-12-09,Other,optional,₹,false
+Haircut and Grooming,500,2024-12-10,Other,optional,₹,false
+Spa and Massage,2500,2024-12-11,Other,optional,₹,false
+Home Cleaning Service,800,2024-12-05,Other,optional,₹,false
+Grocery Mid-Month,2200,2024-11-15,Food,required,₹,false
+Fuel Tank Full,1800,2024-11-20,Travel,required,₹,false
+Restaurant Dinner,1500,2024-11-22,Food,optional,₹,false
+Online Shopping,2800,2024-11-25,Shopping,optional,₹,false
+Movie Night,400,2024-11-27,Shopping,optional,₹,false
+Weekly Groceries,2100,2024-11-28,Food,required,₹,false
+Coffee Outing,300,2024-11-29,Food,optional,₹,false
