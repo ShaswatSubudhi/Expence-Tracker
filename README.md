@@ -2,7 +2,7 @@
 
 A feature-rich, responsive expense tracking application with budget management, multi-currency support, and detailed analytics. Built with vanilla JavaScript and Chart.js for optimal performance.
 
-![Expense Tracker Preview](preview.png)
+![Expense Tracker Preview](preview.jpeg)
 
 ## ✨ Features
 
